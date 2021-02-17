@@ -1,0 +1,326 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "STEEM/src/tests",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "STEEM/src/tests",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "STEEM",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-Continuous-Debug-ddf5066e4f8cf3ce8522.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousBuild::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousBuild-Debug-73908a2dc92a8a2d4cd0.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousConfigure::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousConfigure-Debug-79beb78d8affdaae8fcc.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousCoverage::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousCoverage-Debug-49e8ecb4ec9f233b4215.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousMemCheck::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousMemCheck-Debug-90ca4ff445ad777733a0.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousStart::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousStart-Debug-4de28ae4aee0269bca89.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousSubmit::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousSubmit-Debug-3409dea0df52034e1e53.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousTest::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousTest-Debug-04d95e2a49409e27162a.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousUpdate::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ContinuousUpdate-Debug-96b89ca3ffb5762c8245.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-Experimental-Debug-66de49c031731c27ca02.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalBuild::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalBuild-Debug-5f4dc6a6efe201d2291c.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalConfigure::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalConfigure-Debug-c2b55c7b26c913f5765b.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalCoverage::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalCoverage-Debug-18415d30854525e4037a.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalMemCheck::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalMemCheck-Debug-6c5a9b04024190498425.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalStart::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalStart-Debug-d7fcfba118c9f4f0c288.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalSubmit::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalSubmit-Debug-7379434ca52252d9cdf5.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalTest::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalTest-Debug-50cc086a19c254c46603.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalUpdate::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-ExperimentalUpdate-Debug-55439dcd732cf6bedf59.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-Nightly-Debug-64c237180f9c55362445.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyBuild::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyBuild-Debug-7251db86d5abb692dc8d.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyConfigure::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyConfigure-Debug-93396339c9e2631f019d.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyCoverage::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyCoverage-Debug-ef19b38c75079eea7a28.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemCheck::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyMemCheck-Debug-f1a6a0b7d490b63f2321.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-65083dc1cbfe498cef24.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyStart::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyStart-Debug-0ca42050d9c06e79bafc.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlySubmit::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlySubmit-Debug-f2647e129b09239332e0.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyTest::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyTest-Debug-475f54ce9d8eb80727a3.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyUpdate::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-NightlyUpdate-Debug-ef097ce076d0b993d2dd.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "WindowTest::@f44709b39b5ce934d1e6",
+					"jsonFile" : "target-WindowTest-Debug-3cb28ba5a020fb3466c8.json",
+					"name" : "WindowTest",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/preston/Documents/Steem/build",
+		"source" : "/home/preston/Documents/Steem"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

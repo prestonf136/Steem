@@ -86,17 +86,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -107,6 +96,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -141,6 +141,321 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/rule
+
+# Convenience name for target.
+NightlyMemCheck: STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/rule
+
+.PHONY : NightlyMemCheck
+
+# fast build rule for target.
+NightlyMemCheck/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/build.make STEEM/src/tests/CMakeFiles/NightlyMemCheck.dir/build
+.PHONY : NightlyMemCheck/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyTest.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyTest.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyTest.dir/rule
+
+# Convenience name for target.
+NightlyTest: STEEM/src/tests/CMakeFiles/NightlyTest.dir/rule
+
+.PHONY : NightlyTest
+
+# fast build rule for target.
+NightlyTest/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyTest.dir/build.make STEEM/src/tests/CMakeFiles/NightlyTest.dir/build
+.PHONY : NightlyTest/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/rule
+
+# Convenience name for target.
+ContinuousConfigure: STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/rule
+
+.PHONY : ContinuousConfigure
+
+# fast build rule for target.
+ContinuousConfigure/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousConfigure.dir/build
+.PHONY : ContinuousConfigure/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/rule
+
+# Convenience name for target.
+ContinuousBuild: STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/rule
+
+.PHONY : ContinuousBuild
+
+# fast build rule for target.
+ContinuousBuild/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousBuild.dir/build
+.PHONY : ContinuousBuild/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/rule
+
+# Convenience name for target.
+NightlyConfigure: STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/rule
+
+.PHONY : NightlyConfigure
+
+# fast build rule for target.
+NightlyConfigure/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/build.make STEEM/src/tests/CMakeFiles/NightlyConfigure.dir/build
+.PHONY : NightlyConfigure/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/rule
+
+# Convenience name for target.
+NightlyMemoryCheck: STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/rule
+
+.PHONY : NightlyMemoryCheck
+
+# fast build rule for target.
+NightlyMemoryCheck/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/build.make STEEM/src/tests/CMakeFiles/NightlyMemoryCheck.dir/build
+.PHONY : NightlyMemoryCheck/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/rule
+
+# Convenience name for target.
+ExperimentalTest: STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/rule
+
+.PHONY : ExperimentalTest
+
+# fast build rule for target.
+ExperimentalTest/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalTest.dir/build
+.PHONY : ExperimentalTest/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/rule
+
+# Convenience name for target.
+ContinuousUpdate: STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/rule
+
+.PHONY : ContinuousUpdate
+
+# fast build rule for target.
+ContinuousUpdate/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousUpdate.dir/build
+.PHONY : ContinuousUpdate/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/rule
+
+# Convenience name for target.
+NightlyUpdate: STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/rule
+
+.PHONY : NightlyUpdate
+
+# fast build rule for target.
+NightlyUpdate/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/build.make STEEM/src/tests/CMakeFiles/NightlyUpdate.dir/build
+.PHONY : NightlyUpdate/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/rule
+
+# Convenience name for target.
+ExperimentalMemCheck: STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/rule
+
+.PHONY : ExperimentalMemCheck
+
+# fast build rule for target.
+ExperimentalMemCheck/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalMemCheck.dir/build
+.PHONY : ExperimentalMemCheck/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/rule
+
+# Convenience name for target.
+ExperimentalSubmit: STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/rule
+
+.PHONY : ExperimentalSubmit
+
+# fast build rule for target.
+ExperimentalSubmit/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalSubmit.dir/build
+.PHONY : ExperimentalSubmit/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/Experimental.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/Experimental.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/Experimental.dir/rule
+
+# Convenience name for target.
+Experimental: STEEM/src/tests/CMakeFiles/Experimental.dir/rule
+
+.PHONY : Experimental
+
+# fast build rule for target.
+Experimental/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/Experimental.dir/build.make STEEM/src/tests/CMakeFiles/Experimental.dir/build
+.PHONY : Experimental/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/rule
+
+# Convenience name for target.
+ContinuousCoverage: STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/rule
+
+.PHONY : ContinuousCoverage
+
+# fast build rule for target.
+ContinuousCoverage/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousCoverage.dir/build
+.PHONY : ContinuousCoverage/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/rule
+
+# Convenience name for target.
+ExperimentalConfigure: STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/rule
+
+.PHONY : ExperimentalConfigure
+
+# fast build rule for target.
+ExperimentalConfigure/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalConfigure.dir/build
+.PHONY : ExperimentalConfigure/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/Continuous.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/Continuous.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/Continuous.dir/rule
+
+# Convenience name for target.
+Continuous: STEEM/src/tests/CMakeFiles/Continuous.dir/rule
+
+.PHONY : Continuous
+
+# fast build rule for target.
+Continuous/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/Continuous.dir/build.make STEEM/src/tests/CMakeFiles/Continuous.dir/build
+.PHONY : Continuous/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/Nightly.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/Nightly.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/Nightly.dir/rule
+
+# Convenience name for target.
+Nightly: STEEM/src/tests/CMakeFiles/Nightly.dir/rule
+
+.PHONY : Nightly
+
+# fast build rule for target.
+Nightly/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/Nightly.dir/build.make STEEM/src/tests/CMakeFiles/Nightly.dir/build
+.PHONY : Nightly/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlySubmit.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlySubmit.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlySubmit.dir/rule
+
+# Convenience name for target.
+NightlySubmit: STEEM/src/tests/CMakeFiles/NightlySubmit.dir/rule
+
+.PHONY : NightlySubmit
+
+# fast build rule for target.
+NightlySubmit/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlySubmit.dir/build.make STEEM/src/tests/CMakeFiles/NightlySubmit.dir/build
+.PHONY : NightlySubmit/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyStart.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyStart.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyStart.dir/rule
+
+# Convenience name for target.
+NightlyStart: STEEM/src/tests/CMakeFiles/NightlyStart.dir/rule
+
+.PHONY : NightlyStart
+
+# fast build rule for target.
+NightlyStart/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyStart.dir/build.make STEEM/src/tests/CMakeFiles/NightlyStart.dir/build
+.PHONY : NightlyStart/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/rule
+
+# Convenience name for target.
+ExperimentalCoverage: STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/rule
+
+.PHONY : ExperimentalCoverage
+
+# fast build rule for target.
+ExperimentalCoverage/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalCoverage.dir/build
+.PHONY : ExperimentalCoverage/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/rule
+
+# Convenience name for target.
+NightlyCoverage: STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/rule
+
+.PHONY : NightlyCoverage
+
+# fast build rule for target.
+NightlyCoverage/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/build.make STEEM/src/tests/CMakeFiles/NightlyCoverage.dir/build
+.PHONY : NightlyCoverage/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/rule
+
+# Convenience name for target.
+ExperimentalStart: STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/rule
+
+.PHONY : ExperimentalStart
+
+# fast build rule for target.
+ExperimentalStart/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalStart.dir/build
+.PHONY : ExperimentalStart/fast
+
+# Convenience name for target.
 STEEM/src/tests/CMakeFiles/WindowTest.dir/rule:
 	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/WindowTest.dir/rule
 .PHONY : STEEM/src/tests/CMakeFiles/WindowTest.dir/rule
@@ -154,6 +469,111 @@ WindowTest: STEEM/src/tests/CMakeFiles/WindowTest.dir/rule
 WindowTest/fast:
 	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/WindowTest.dir/build.make STEEM/src/tests/CMakeFiles/WindowTest.dir/build
 .PHONY : WindowTest/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/NightlyBuild.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/NightlyBuild.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/NightlyBuild.dir/rule
+
+# Convenience name for target.
+NightlyBuild: STEEM/src/tests/CMakeFiles/NightlyBuild.dir/rule
+
+.PHONY : NightlyBuild
+
+# fast build rule for target.
+NightlyBuild/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/NightlyBuild.dir/build.make STEEM/src/tests/CMakeFiles/NightlyBuild.dir/build
+.PHONY : NightlyBuild/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/rule
+
+# Convenience name for target.
+ExperimentalBuild: STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/rule
+
+.PHONY : ExperimentalBuild
+
+# fast build rule for target.
+ExperimentalBuild/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalBuild.dir/build
+.PHONY : ExperimentalBuild/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/rule
+
+# Convenience name for target.
+ExperimentalUpdate: STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/rule
+
+.PHONY : ExperimentalUpdate
+
+# fast build rule for target.
+ExperimentalUpdate/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/build.make STEEM/src/tests/CMakeFiles/ExperimentalUpdate.dir/build
+.PHONY : ExperimentalUpdate/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousStart.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousStart.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousStart.dir/rule
+
+# Convenience name for target.
+ContinuousStart: STEEM/src/tests/CMakeFiles/ContinuousStart.dir/rule
+
+.PHONY : ContinuousStart
+
+# fast build rule for target.
+ContinuousStart/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousStart.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousStart.dir/build
+.PHONY : ContinuousStart/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/rule
+
+# Convenience name for target.
+ContinuousMemCheck: STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/rule
+
+.PHONY : ContinuousMemCheck
+
+# fast build rule for target.
+ContinuousMemCheck/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousMemCheck.dir/build
+.PHONY : ContinuousMemCheck/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousTest.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousTest.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousTest.dir/rule
+
+# Convenience name for target.
+ContinuousTest: STEEM/src/tests/CMakeFiles/ContinuousTest.dir/rule
+
+.PHONY : ContinuousTest
+
+# fast build rule for target.
+ContinuousTest/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousTest.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousTest.dir/build
+.PHONY : ContinuousTest/fast
+
+# Convenience name for target.
+STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/rule:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/rule
+.PHONY : STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/rule
+
+# Convenience name for target.
+ContinuousSubmit: STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/rule
+
+.PHONY : ContinuousSubmit
+
+# fast build rule for target.
+ContinuousSubmit/fast:
+	cd /home/preston/Documents/Steem/build && $(MAKE) $(MAKESILENT) -f STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/build.make STEEM/src/tests/CMakeFiles/ContinuousSubmit.dir/build
+.PHONY : ContinuousSubmit/fast
 
 window_test.o: window_test.cpp.o
 
@@ -191,6 +611,34 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... Continuous"
+	@echo "... ContinuousBuild"
+	@echo "... ContinuousConfigure"
+	@echo "... ContinuousCoverage"
+	@echo "... ContinuousMemCheck"
+	@echo "... ContinuousStart"
+	@echo "... ContinuousSubmit"
+	@echo "... ContinuousTest"
+	@echo "... ContinuousUpdate"
+	@echo "... Experimental"
+	@echo "... ExperimentalBuild"
+	@echo "... ExperimentalConfigure"
+	@echo "... ExperimentalCoverage"
+	@echo "... ExperimentalMemCheck"
+	@echo "... ExperimentalStart"
+	@echo "... ExperimentalSubmit"
+	@echo "... ExperimentalTest"
+	@echo "... ExperimentalUpdate"
+	@echo "... Nightly"
+	@echo "... NightlyBuild"
+	@echo "... NightlyConfigure"
+	@echo "... NightlyCoverage"
+	@echo "... NightlyMemCheck"
+	@echo "... NightlyMemoryCheck"
+	@echo "... NightlyStart"
+	@echo "... NightlySubmit"
+	@echo "... NightlyTest"
+	@echo "... NightlyUpdate"
 	@echo "... WindowTest"
 	@echo "... window_test.o"
 	@echo "... window_test.i"
