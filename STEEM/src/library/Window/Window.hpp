@@ -1,8 +1,10 @@
 #pragma once
 
 #include <string>
+#include <memory>
+#include <iostream>
+#include "../assert.hpp"
 
-#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
 namespace Steem
@@ -11,7 +13,11 @@ namespace Steem
   {
     private:
       GLFWwindow* m_Window;
+      std::string m_Name;
+
+      uint32_t m_Width, m_Height;
     public:
       Window(const std::string &name, uint32_t width, uint32_t height, bool resizeable = false);
+      ~Window();
   };
 }
