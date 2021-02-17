@@ -6,7 +6,10 @@ enable_testing()
 
 add_subdirectory("STEEM/src/library")
 
-add_subdirectory("STEEM/vendor/glfw")
-add_subdirectory("STEEM/vendor/glm")
+include(CTest)
 
-add_subdirectory("STEEM/src/tests")
+add_executable(WindowTest "STEEM/src/tests/window_test.cpp")
+target_link_libraries(WindowTest PRIVATE STEEM_LIBRARY)
+if(BUILD_TESTING)
+  add_test(STEEM_TESTS WindowTest)
+endif()
