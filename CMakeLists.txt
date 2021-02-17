@@ -8,9 +8,10 @@ add_subdirectory("STEEM/src/library")
 
 include(CTest)
 
-add_executable(WindowTest "STEEM/src/tests/window_test.cpp")
-target_link_libraries(WindowTest PRIVATE STEEM_LIBRARY)
+add_executable(LIBRARY_TEST "STEEM/src/tests/library_test.cpp")
+target_link_libraries(LIBRARY_TEST PRIVATE STEEM_LIBRARY)
+
 
 if(BUILD_TESTING)
-  add_test(STEEM_TESTS WindowTest)
+  add_test(STEEM_TESTS LIBRARY_TEST)
 endif()
