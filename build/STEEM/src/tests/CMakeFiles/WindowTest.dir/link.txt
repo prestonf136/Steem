@@ -1,0 +1,1 @@
+/bin/g++ -g CMakeFiles/WindowTest.dir/window_test.cpp.o -o WindowTest 

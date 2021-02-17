@@ -1,0 +1,18 @@
+Start testing: Feb 17 06:34 EST
+----------------------------------------------------------
+1/1 Testing: STEEM_TESTS
+1/1 Test: STEEM_TESTS
+Command: "/home/preston/Documents/Steem/build/STEEM/src/tests/WindowTest"
+Directory: /home/preston/Documents/Steem/build/STEEM/src/tests
+"STEEM_TESTS" start time: Feb 17 06:34 EST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"STEEM_TESTS" end time: Feb 17 06:34 EST
+"STEEM_TESTS" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Feb 17 06:34 EST
