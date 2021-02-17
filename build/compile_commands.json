@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/preston/Documents/Steem/build/STEEM/src/tests",
-  "command": "/bin/g++   -g -o CMakeFiles/WindowTest.dir/window_test.cpp.o -c /home/preston/Documents/Steem/STEEM/src/tests/window_test.cpp",
-  "file": "/home/preston/Documents/Steem/STEEM/src/tests/window_test.cpp"
-}
-]
