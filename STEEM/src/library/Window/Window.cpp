@@ -25,7 +25,7 @@ Steem::Window::~Window()
     glfwDestroyWindow(m_Window);
 }
 
-void Steem::Window::StartLoop()
+void Steem::Window::Bind()
 {
 
   while(!glfwWindowShouldClose(m_Window))

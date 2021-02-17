@@ -10,8 +10,14 @@ add_library(
 )
 
 add_library(
+  VertexBuffer
+  VertexBuffer/VertexBuffer.cpp
+  VertexBuffer/VertexBuffer.hpp
+)
+
+add_library(
   STEEM_LIBRARY
   INTERFACE
 )
 
-target_link_libraries(STEEM_LIBRARY INTERFACE GLEW::GLEW Window glfw)
+target_link_libraries(STEEM_LIBRARY INTERFACE GLEW::GLEW VertexBuffer Window glfw)

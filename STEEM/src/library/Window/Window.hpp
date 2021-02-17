@@ -20,6 +20,6 @@ namespace Steem
     public:
       Window(const std::string &name, uint32_t width, uint32_t height, bool resizeable = false);
       ~Window();
-      void StartLoop();
+      void Bind();
   };
 }

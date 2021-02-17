@@ -3,6 +3,6 @@
 int main()
 {
   auto win = Steem::Window("Hola! soy dora",800,600, false);
-  win.StartLoop();
+  win.Bind();
   return 0;
 };
