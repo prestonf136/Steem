@@ -1,10 +1,11 @@
 #pragma once
 
 #include <string>
-#include <memory>
 #include <iostream>
 #include "../assert.hpp"
 
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 namespace Steem
@@ -19,5 +20,6 @@ namespace Steem
     public:
       Window(const std::string &name, uint32_t width, uint32_t height, bool resizeable = false);
       ~Window();
+      void StartLoop();
   };
 }

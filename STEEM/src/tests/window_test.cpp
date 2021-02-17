@@ -2,6 +2,7 @@
 
 int main()
 {
-  auto win = Steem::Window("Hola! soy dora",800,600);
+  auto win = Steem::Window("Hola! soy dora",800,600, false);
+  win.StartLoop();
   return 0;
 };

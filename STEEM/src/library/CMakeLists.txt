@@ -1,7 +1,7 @@
 add_subdirectory("vendor/glfw")
 add_subdirectory("vendor/glm")
 
-find_package(Vulkan REQUIRED)
+find_package(GLEW REQUIRED)
 
 add_library(
   Window
@@ -14,4 +14,4 @@ add_library(
   INTERFACE
 )
 
-target_link_libraries(STEEM_LIBRARY INTERFACE Vulkan::Vulkan Window glfw)
+target_link_libraries(STEEM_LIBRARY INTERFACE GLEW::GLEW Window glfw)
