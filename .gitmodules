@@ -1,0 +1,6 @@
+[submodule "STEEM/vendor/glfw"]
+	path = STEEM/vendor/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "STEEM/vendor/glm"]
+	path = STEEM/vendor/glm
+	url = https://github.com/g-truc/glm.git
