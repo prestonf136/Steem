@@ -1,5 +1,3 @@
 # Steem
 
-a game engine powered by OPENGL
-this was a quick little thing I thought I'd setup following
-https://open.gl/
+engine on hold for a couple hours while I find a rendering abstraction layer, so far LLGL looks good
