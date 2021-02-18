@@ -18,18 +18,18 @@ int main() {
   LLGL::RenderContext *Context = Renderer->CreateRenderContext(ContextDesc);
   auto &window = LLGL::CastTo<LLGL::Window>(Context->GetSurface());
 
-  window.SetTitle(L"LLGL Example: Hello Triangle");
+  window.SetTitle(L"STEEM engine library test");
   window.Show();
 
   struct TriangleVertex {
     float position[2];
     uint8_t color[4];
   };
-
+  float s = 0.5f;
   TriangleVertex Triangle[] = {
-      TriangleVertex{{0.0f, 0.5f}, {255, 0, 0, 255}},
-      TriangleVertex{{0.5f, -0.5f}, {0, 255, 0, 255}},
-      TriangleVertex{{-0.5f, -0.5f}, {0, 0, 255, 255}},
+      TriangleVertex{{0.0f, s}, {255, 0, 0, 255}},
+      TriangleVertex{{s, -s}, {0, 255, 0, 255}},
+      TriangleVertex{{-s, -s}, {0, 0, 255, 255}},
   };
 
   LLGL::VertexFormat VertexFormatAttrib;
