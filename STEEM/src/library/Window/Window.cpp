@@ -8,8 +8,8 @@ Steem::Window::Window(const std::string &name, uint32_t width, uint32_t height, 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
   glfwWindowHint(GLFW_RESIZABLE, resizeable ? GLFW_TRUE : GLFW_FALSE);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 
   m_Window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
