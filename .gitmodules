@@ -1,6 +1,3 @@
-[submodule "STEEM/src/library/vendor/LLGL"]
-	path = STEEM/src/library/vendor/LLGL
-	url = https://github.com/LukasBanana/LLGL.git
 [submodule "STEEM/src/library/vendor/glm"]
 	path = STEEM/src/library/vendor/glm
 	url = https://github.com/g-truc/glm.git
