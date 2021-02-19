@@ -1,10 +1,4 @@
 #include <LLGL/LLGL.h>
-#include <cstdlib>
-
-#define LLGL_ENABLE_UTILITY
-#include <LLGL/Platform/Platform.h>
-#include <LLGL/Utility.h>
-
 #include <memory>
 
 int main() {
