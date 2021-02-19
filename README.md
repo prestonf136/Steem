@@ -7,3 +7,5 @@ Will start with:
 - [ ] Texture Component
 - [ ] Model Loading System
 - [ ] GUI Components and System
+
+learning with https://learnopengl.com
