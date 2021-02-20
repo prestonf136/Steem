@@ -21,11 +21,11 @@ int main()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
+  
   GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
   ASSERT(window != nullptr);
   glfwMakeContextCurrent(window);
-
+  
   ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
   glfwSetFramebufferSizeCallback(window, fb_callb);
 
@@ -76,9 +76,11 @@ int main()
   glDeleteShader(FragShader);
 
   float vertices[] = {
-     -0.5f, -0.5f, 0.0f,
-      0.5f, -0.5f, 0.0f,
-      0.0f,  0.5f, 0.0f,
+     -0.5f, -0.5f,
+      0.5f, -0.5f,
+      0.0f,  0.5f
+
+      
   }; 
 
   GLuint VBO, VAO;
@@ -90,7 +92,7 @@ int main()
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_TRUE, 2 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
   
   glBindVertexArray(0);
