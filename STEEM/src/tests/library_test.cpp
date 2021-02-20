@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../library/assert.hpp"
+#include "../library/steem_macros.hpp"
 
 #include <iostream>
 
@@ -23,10 +23,10 @@ int main()
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   
   GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
-  ASSERT(window != nullptr);
+  ST_ASSERT(window != nullptr);
   glfwMakeContextCurrent(window);
   
-  ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
+  ST_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
   glfwSetFramebufferSizeCallback(window, fb_callb);
 
   const char *VertexSource = 
@@ -44,7 +44,7 @@ int main()
 
   int success;
   glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &success);
-  ASSERT(success == true);
+  ST_ASSERT(success == true);
 
   const char *FragSource = 
   "#version 330 core\n"
@@ -60,7 +60,7 @@ int main()
   glCompileShader(FragShader);
 
   glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &success);
-  ASSERT(success == true);
+  ST_ASSERT(success == true);
 
   GLuint shaderProgram;
   shaderProgram = glCreateProgram();
@@ -70,20 +70,25 @@ int main()
   glLinkProgram(shaderProgram);
 
   glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-  ASSERT(success == true);
+  ST_ASSERT(success == true);
 
   glDeleteShader(VertexShader);
   glDeleteShader(FragShader);
 
-  float vertices[] = {
-     -0.5f, -0.5f,
-      0.5f, -0.5f,
-      0.0f,  0.5f
+  GLfloat vertices[] = {
+       0.5f,  0.5f,
+       0.5f, -0.5f,
+      -0.5f, -0.5f,
+      -0.5f,  0.5f,
+  };
 
-      
+  GLuint indices[] = {
+    0, 1, 3,
+    1, 2, 3
   }; 
 
-  GLuint VBO, VAO;
+  ST_LOG(sizeof(vertices));
+  GLuint VBO, VAO, EBO;
   glGenVertexArrays(1, &VAO);
 
   glBindVertexArray(VAO);
@@ -92,10 +97,15 @@ int main()
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_TRUE, 2 * sizeof(float), (void*)0);
+  glGenBuffers(1, &EBO);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_TRUE, 2 * sizeof(GLfloat), (void*)0);
   glEnableVertexAttribArray(0);
   
   glBindVertexArray(0);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   while(!glfwWindowShouldClose(window))
   {
     glfwSwapBuffers(window);
@@ -106,7 +116,8 @@ int main()
 
     glUseProgram(shaderProgram);
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glDrawElements(GL_TRIANGLES, sizeof(vertices) / sizeof(GLfloat), GL_UNSIGNED_INT, 0);
 
     glfwPollEvents();
   }
