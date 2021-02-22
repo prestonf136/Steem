@@ -22,7 +22,7 @@ class Shader
 private:
     GLuint m_ShaderID;
 public:
-    Shader(Steem::ShaderInfo info);
+    Shader(Steem::ShaderInfo  const &info);
     ~Shader();
 
     inline void Bind() const { glUseProgram(m_ShaderID); };

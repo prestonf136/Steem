@@ -4,6 +4,8 @@
 #include "../library/steem_macros.hpp"
 #include "../library/Shader/Shader.hpp"
 #include "../library/VertexBuffer/VertexBuffer.hpp"
+#include "../library/IndexBuffer/IndexBuffer.hpp"
+#include "../library/VertexArray/VertexArray.hpp"
 #include <iostream>
 
 void fb_callb(GLFWwindow* window, int width, int height)
@@ -68,7 +70,6 @@ int main()
 
   Steem::Shader shad(ShadInf);
 
-///////////////////////////////
   GLfloat vertices[] = {
        0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
        0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
@@ -81,31 +82,27 @@ int main()
   arr.size = sizeof(vertices);
   arr.VertexArray = vertices;
 
-  ST_LOG(arr.size);
-
   GLuint indices[] = {
     0, 1, 3,
     1, 2, 3
   }; 
 
-  GLuint VAO, EBO;
-  glGenVertexArrays(1, &VAO);
+  Steem::VertexArray vao;
 
-  glBindVertexArray(VAO);
+  vao.Bind();
   Steem::VertexBuffer buf(arr);
-///////////////////////////////
-  glGenBuffers(1, &EBO);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)0);
-  glEnableVertexAttribArray(0);
+  Steem::IndexBufferInfo ibo;
+  ibo.IndexArray = indices;
+  ibo.size = sizeof(indices);
+  ibo.stride = 5 * sizeof(GLfloat);
 
+  Steem::IndexBuffer ib(ibo);
+  ib.SetAttrib(2, 0);
+  ib.SetAttrib(3, 2);
+
+  ST_LOG(ib.GetHighest());
   
-  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
-  glEnableVertexAttribArray(1);
-
-  glBindVertexArray(0);
   while(!glfwWindowShouldClose(window))
   {
     glfwSwapBuffers(window);
@@ -115,14 +112,12 @@ int main()
     glClear(GL_COLOR_BUFFER_BIT);
 
     shad.Bind();
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    vao.Bind();
+    ib.Bind();
     glDrawElements(GL_TRIANGLES, sizeof(vertices) / sizeof(GLfloat), GL_UNSIGNED_INT, 0);
 
     glfwPollEvents();
   }
-
-  glDeleteVertexArrays(1, &VAO);
 }
   glfwTerminate();
 }

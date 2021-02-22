@@ -19,13 +19,29 @@ add_library(
   VertexBuffer/VertexBuffer.hpp
 )
 
+add_library(
+  IndexBuffer
+  IndexBuffer/IndexBuffer.cpp
+  IndexBuffer/IndexBuffer.hpp
+)
+
+add_library(
+  VertexArray
+  VertexArray/VertexArray.cpp
+  VertexArray/VertexArray.hpp
+)
+
 target_link_libraries(Shader PUBLIC glad)
 target_link_libraries(VertexBuffer PUBLIC glad)
+target_link_libraries(IndexBuffer PUBLIC glad)
+target_link_libraries(VertexArray PUBLIC glad)
 
 target_link_libraries(
   STEEM_LIBRARY INTERFACE 
   Shader
   VertexBuffer
+  IndexBuffer
+  VertexArray
 
   glfw
   glad

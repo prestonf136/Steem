@@ -1,6 +1,6 @@
 #include "Shader.hpp"
 
-Steem::Shader::Shader(Steem::ShaderInfo info)
+Steem::Shader::Shader(Steem::ShaderInfo const &info)
 {
     GLuint VertexShader;
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
