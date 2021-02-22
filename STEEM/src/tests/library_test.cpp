@@ -59,9 +59,10 @@ int main()
   "#version 330 core\n"
   "out vec4 FragColor;\n"
   "in vec4 color;\n"
+  "uniform float u_Color;\n"
   "void main()\n"
   "{\n"
-  "   FragColor = color;\n"
+  "   FragColor = vec4(u_Color, 1.0f, 1.0f, 1.0f);\n"
   "}\0";
 {
   Steem::ShaderInfo ShadInf;
@@ -98,10 +99,9 @@ int main()
   ibo.stride = 5 * sizeof(GLfloat);
 
   Steem::IndexBuffer ib(ibo);
-  ib.SetAttrib(2, 0);
-  ib.SetAttrib(3, 2);
+  ib.SetAttrib(2);
+  ib.SetAttrib(3);
 
-  ST_LOG(ib.GetHighest());
   
   while(!glfwWindowShouldClose(window))
   {
@@ -111,11 +111,13 @@ int main()
     glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+/////////////////////////
     shad.Bind();
+    shad.SetUniformf("u_Color", 1.0f);
     vao.Bind();
     ib.Bind();
     glDrawElements(GL_TRIANGLES, sizeof(vertices) / sizeof(GLfloat), GL_UNSIGNED_INT, 0);
-
+/////////////////////////
     glfwPollEvents();
   }
 }

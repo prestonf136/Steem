@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 #include "../steem_macros.hpp"
 
 #include <string>
@@ -24,6 +25,11 @@ private:
 public:
     Shader(Steem::ShaderInfo  const &info);
     ~Shader();
+
+    void SetUniformf(std::string const &name, glm::vec4 _data);
+    void SetUniformf(std::string const &name, glm::vec3 _data);
+    void SetUniformf(std::string const &name, glm::vec2 _data);
+    void SetUniformf(std::string const &name, GLfloat _data);
 
     inline void Bind() const { glUseProgram(m_ShaderID); };
     inline void UnBind() const { glUseProgram(0); };

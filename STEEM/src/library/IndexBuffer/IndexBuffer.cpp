@@ -13,12 +13,13 @@ Steem::IndexBuffer::~IndexBuffer()
     glDeleteBuffers(1, &m_BufferID);
 }
 
-void Steem::IndexBuffer::SetAttrib(int size, GLuint pad = 0)
+void Steem::IndexBuffer::SetAttrib(int size)
 {
     Bind();
-    glVertexAttribPointer(m_AttribPntr, size, GL_FLOAT, GL_FALSE, m_Info.stride, (void*)(pad * sizeof(GLfloat)));
+    glVertexAttribPointer(m_AttribPntr, size, GL_FLOAT, GL_FALSE, m_Info.stride, (void*)(m_Pad * sizeof(GLfloat)));
     glEnableVertexAttribArray(m_AttribPntr);
     
     m_AttribPntr++;
     used_pntrs.push_back(m_AttribPntr);
+    m_Pad = size;
 }
