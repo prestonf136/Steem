@@ -1,7 +1,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../library/steem_macros.hpp"
 
+#include "../library/steem_macros.hpp"
+#include "../library/Shader/Shader.hpp"
+#include "../library/VertexBuffer/VertexBuffer.hpp"
 #include <iostream>
 
 void fb_callb(GLFWwindow* window, int width, int height)
@@ -51,15 +53,6 @@ int main()
   "   color = in_col;"
   "}\0";
 
-  GLuint VertexShader;
-  VertexShader = glCreateShader(GL_VERTEX_SHADER);
-  glShaderSource(VertexShader, 1, &VertexSource, NULL);
-  glCompileShader(VertexShader);
-
-  int success;
-  glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &success);
-  ST_ASSERT(success == true);
-
   const char *FragSource = 
   "#version 330 core\n"
   "out vec4 FragColor;\n"
@@ -68,28 +61,14 @@ int main()
   "{\n"
   "   FragColor = color;\n"
   "}\0";
+{
+  Steem::ShaderInfo ShadInf;
+  ShadInf.FragmentData = FragSource;
+  ShadInf.VertexData = VertexSource;
 
-  GLuint FragShader;
-  FragShader = glCreateShader(GL_FRAGMENT_SHADER);
-  glShaderSource(FragShader, 1, &FragSource, NULL);
-  glCompileShader(FragShader);
+  Steem::Shader shad(ShadInf);
 
-  glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &success);
-  ST_ASSERT(success == true);
-
-  GLuint shaderProgram;
-  shaderProgram = glCreateProgram();
-
-  glAttachShader(shaderProgram, VertexShader);
-  glAttachShader(shaderProgram, FragShader);
-  glLinkProgram(shaderProgram);
-
-  glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-  ST_ASSERT(success == true);
-
-  glDeleteShader(VertexShader);
-  glDeleteShader(FragShader);
-
+///////////////////////////////
   GLfloat vertices[] = {
        0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
        0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
@@ -97,21 +76,24 @@ int main()
       -0.5f,  0.5f, 1.0f, 1.0f, 0.0f,
   };
 
+
+  Steem::VertexBufferInfo arr;
+  arr.size = sizeof(vertices);
+  arr.VertexArray = vertices;
+
+  ST_LOG(arr.size);
+
   GLuint indices[] = {
     0, 1, 3,
     1, 2, 3
   }; 
 
-  ST_LOG(sizeof(vertices));
-  GLuint VBO, VAO, EBO;
+  GLuint VAO, EBO;
   glGenVertexArrays(1, &VAO);
 
   glBindVertexArray(VAO);
-
-  glGenBuffers(1, &VBO);
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
+  Steem::VertexBuffer buf(arr);
+///////////////////////////////
   glGenBuffers(1, &EBO);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
@@ -119,7 +101,8 @@ int main()
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)0);
   glEnableVertexAttribArray(0);
 
-  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(2 * sizeof(float)));
+  
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
   glEnableVertexAttribArray(1);
 
   glBindVertexArray(0);
@@ -131,7 +114,7 @@ int main()
     glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glUseProgram(shaderProgram);
+    shad.Bind();
     glBindVertexArray(VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glDrawElements(GL_TRIANGLES, sizeof(vertices) / sizeof(GLfloat), GL_UNSIGNED_INT, 0);
@@ -140,8 +123,6 @@ int main()
   }
 
   glDeleteVertexArrays(1, &VAO);
-  glDeleteBuffers(1, &VBO);
-  glDeleteProgram(shaderProgram);
-
+}
   glfwTerminate();
 }

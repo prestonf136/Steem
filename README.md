@@ -1,6 +1,8 @@
 # Steem
 
-Will start with:
+currently working on abstracting opengl into classes
+
+want to end up with:
 - [ ] Primitive System
 
 - [ ] Movement Component
