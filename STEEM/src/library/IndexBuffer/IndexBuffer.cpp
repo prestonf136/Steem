@@ -3,9 +3,9 @@
 Steem::IndexBuffer::IndexBuffer(Steem::IndexBufferInfo const &info)
 {
     m_Info = info;
-  glGenBuffers(1, &m_BufferID);
-  Bind();
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, info.size, info.IndexArray, GL_STATIC_DRAW);
+    glGenBuffers(1, &m_BufferID);
+    Bind();
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, info.size, info.IndexArray, GL_STATIC_DRAW);
 }
 
 Steem::IndexBuffer::~IndexBuffer()
@@ -21,5 +21,5 @@ void Steem::IndexBuffer::SetAttrib(int size)
     
     m_AttribPntr++;
     used_pntrs.push_back(m_AttribPntr);
-    m_Pad = size;
+    m_Pad += size;
 }

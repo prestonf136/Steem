@@ -73,6 +73,8 @@ int main()
 
   Steem::Shader shad(ShadInf);
 
+  Steem::VertexBufferInfo arr;
+
   GLfloat vertices[] = {
        0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
        0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
@@ -80,22 +82,20 @@ int main()
       -0.5f,  0.5f, 1.0f, 1.0f, 0.0f,
   };
 
-
-  Steem::VertexBufferInfo arr;
   arr.size = sizeof(vertices);
   arr.VertexArray = vertices;
+  Steem::VertexBuffer buf(arr);
+  
+  Steem::VertexArray vao;
+  vao.Bind();
 
+  Steem::IndexBufferInfo ibo;
+  
   GLuint indices[] = {
     0, 1, 3,
     1, 2, 3
   }; 
 
-  Steem::VertexArray vao;
-
-  vao.Bind();
-  Steem::VertexBuffer buf(arr);
-
-  Steem::IndexBufferInfo ibo;
   ibo.IndexArray = indices;
   ibo.size = sizeof(indices);
   ibo.stride = 5 * sizeof(GLfloat);
@@ -112,6 +112,7 @@ int main()
   
   renderInfo.Size = sizeof(indices) / sizeof(GLfloat);
   renderInfo.Vertices = vertices;
+
 
 
   Steem::Renderer renderer;

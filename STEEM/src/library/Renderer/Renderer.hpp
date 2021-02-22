@@ -8,6 +8,7 @@
 #include "../steem_macros.hpp"
 
 #include <functional>
+#include <algorithm>
 
 namespace Steem {
 struct RendererInfo
