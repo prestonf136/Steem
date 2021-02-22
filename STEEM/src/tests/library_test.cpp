@@ -10,27 +10,6 @@
 
 #include <iostream>
 
-void fb_callb(GLFWwindow* window, int width, int height)
-{
-  glViewport(0, 0, width, height);
-};
-
-bool toggle = true;
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
-    {
-      glPolygonMode(GL_FRONT_AND_BACK, toggle ? GL_FILL : GL_LINE );
-      toggle = !toggle;
-    }
-}
-
-void processInput(GLFWwindow *window)
-{
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
-
 int main()
 {
   glfwInit();
@@ -41,10 +20,8 @@ int main()
   GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
   ST_ASSERT(window != nullptr);
   glfwMakeContextCurrent(window);
-  glfwSetKeyCallback(window, key_callback);
 
   ST_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-  glfwSetFramebufferSizeCallback(window, fb_callb);
 
   const char *VertexSource = 
   "#version 330 core\n"
@@ -120,7 +97,6 @@ int main()
   while(!glfwWindowShouldClose(window))
   {
     glfwSwapBuffers(window);
-    processInput(window);
 
     glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
