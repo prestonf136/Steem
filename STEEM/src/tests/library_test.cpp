@@ -6,6 +6,8 @@
 #include "../library/VertexBuffer/VertexBuffer.hpp"
 #include "../library/IndexBuffer/IndexBuffer.hpp"
 #include "../library/VertexArray/VertexArray.hpp"
+#include "../library/Renderer/Renderer.hpp"
+
 #include <iostream>
 
 void fb_callb(GLFWwindow* window, int width, int height)
@@ -62,7 +64,7 @@ int main()
   "uniform float u_Color;\n"
   "void main()\n"
   "{\n"
-  "   FragColor = vec4(u_Color, 1.0f, 1.0f, 1.0f);\n"
+  "   FragColor = color;\n"
   "}\0";
 {
   Steem::ShaderInfo ShadInf;
@@ -102,7 +104,18 @@ int main()
   ib.SetAttrib(2);
   ib.SetAttrib(3);
 
+
+  Steem::RendererInfo renderInfo;
+  renderInfo.IndexBuf = &ib;
+  renderInfo.VertArr = &vao;
+  renderInfo.Shader = &shad;
   
+  renderInfo.Size = sizeof(indices) / sizeof(GLfloat);
+  renderInfo.Vertices = vertices;
+
+
+  Steem::Renderer renderer;
+  renderer.SetDrawInfo(renderInfo);
   while(!glfwWindowShouldClose(window))
   {
     glfwSwapBuffers(window);
@@ -110,14 +123,9 @@ int main()
 
     glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    
+    renderer.Draw();
 
-/////////////////////////
-    shad.Bind();
-    shad.SetUniformf("u_Color", 1.0f);
-    vao.Bind();
-    ib.Bind();
-    glDrawElements(GL_TRIANGLES, sizeof(vertices) / sizeof(GLfloat), GL_UNSIGNED_INT, 0);
-/////////////////////////
     glfwPollEvents();
   }
 }
