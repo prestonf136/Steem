@@ -12,6 +12,7 @@
 
 int main()
 {
+///////////////////////////////////////////////////
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -22,7 +23,7 @@ int main()
   glfwMakeContextCurrent(window);
 
   ST_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-
+///////////////////////////////////////////////////
   const char *VertexSource = 
   "#version 330 core\n"
   "layout (location = 0) in vec4 aPos;\n"
@@ -94,17 +95,22 @@ int main()
 
   Steem::Renderer renderer;
   renderer.SetDrawInfo(renderInfo);
+  ///////////////////////////////////////////////////
   while(!glfwWindowShouldClose(window))
+///////////////////////////////////////////////////
   {
+    ///////////////////////////////////////////////////
+    glfwPollEvents();
     glfwSwapBuffers(window);
 
     glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
+    ///////////////////////////////////////////////////
     renderer.Draw();
 
-    glfwPollEvents();
   }
 }
+///////////////////////////////////////////////////
   glfwTerminate();
+///////////////////////////////////////////////////
 }
