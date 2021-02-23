@@ -13,27 +13,9 @@
 
 int main()
 {
-  const char *VertexSource = 
-  "#version 330 core\n"
-  "layout (location = 0) in vec4 aPos;\n"
-  "layout (location = 1) in vec4 in_col;\n"
-  "out vec4 color;\n"
-  "void main()\n"
-  "{\n"
-  "   gl_Position = aPos;\n"
-  "   color = in_col;"
-  "}\0";
+///////////////////////////
 
-  const char *FragSource = 
-  "#version 330 core\n"
-  "out vec4 FragColor;\n"
-  "in vec4 color;\n"
-  "uniform float u_Color;\n"
-  "void main()\n"
-  "{\n"
-  "   FragColor = color;\n"
-  "}\0";
-
+///////////////////////////
   Steem::WindowInfo Winfo;
   Winfo.VersionMajor = 4;
   Winfo.VersionMinor = 6;
@@ -45,8 +27,8 @@ int main()
   Steem::Window win(Winfo);
 
   Steem::ShaderInfo ShadInf;
-  ShadInf.FragmentData = FragSource;
-  ShadInf.VertexData = VertexSource;
+  ShadInf.FragmentData = Steem::ReadFromFile("res/shaders/example.frag");
+  ShadInf.VertexData = Steem::ReadFromFile("res/shaders/example.vert");
 
   Steem::Shader shad(ShadInf);
 

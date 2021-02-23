@@ -62,3 +62,10 @@ Steem::Shader::~Shader()
 {
     glDeleteProgram(m_ShaderID);
 }
+
+std::string Steem::ReadFromFile(std::string const &filename)
+{
+    std::ifstream file(filename);
+    return std::string((std::istreambuf_iterator<char>(file)),
+                    std::istreambuf_iterator<char>());
+};

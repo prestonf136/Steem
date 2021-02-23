@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include "../steem_macros.hpp"
 
+#include <fstream>
 #include <string>
 
 namespace Steem {

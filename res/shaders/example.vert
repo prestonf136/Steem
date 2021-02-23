@@ -1,11 +1,12 @@
 #version 330 core
-layout (location = 0) in vec4 position; 
-layout (location = 1) in vec4 recv_col; 
 
-out vec4 out_color;
+layout (location = 0) in vec4 aPos;
+layout (location = 1) in vec4 in_col;
+
+out vec4 color;
 
 void main()
 {
-    gl_Position = u_MVP * position;
-    out_color = recv_col;
-}
+   gl_Position = aPos;
+   color = in_col;
+};
