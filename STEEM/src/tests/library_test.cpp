@@ -7,23 +7,12 @@
 #include "../library/IndexBuffer/IndexBuffer.hpp"
 #include "../library/VertexArray/VertexArray.hpp"
 #include "../library/Renderer/Renderer.hpp"
+#include "../library/Window/Window.hpp"
 
 #include <iostream>
 
 int main()
 {
-///////////////////////////////////////////////////
-  glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  
-  GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
-  ST_ASSERT(window != nullptr);
-  glfwMakeContextCurrent(window);
-
-  ST_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-///////////////////////////////////////////////////
   const char *VertexSource = 
   "#version 330 core\n"
   "layout (location = 0) in vec4 aPos;\n"
@@ -44,14 +33,17 @@ int main()
   "{\n"
   "   FragColor = color;\n"
   "}\0";
-/* 
-this scope is created because if any
-the Steem::* go out of scope
-they destroy any memory they have used
-after glfw is denitliazed, but making 
-gl calls requires a valid opengl context
-*/
-{
+
+  Steem::WindowInfo Winfo;
+  Winfo.VersionMajor = 4;
+  Winfo.VersionMinor = 6;
+  Winfo.Height = 600;
+  Winfo.Width = 800;
+  Winfo.Name = "OpenGL";
+  Winfo.ClearColor = glm::vec3(1.0f);
+
+  Steem::Window win(Winfo);
+
   Steem::ShaderInfo ShadInf;
   ShadInf.FragmentData = FragSource;
   ShadInf.VertexData = VertexSource;
@@ -94,30 +86,13 @@ gl calls requires a valid opengl context
   renderInfo.IndexBuf = &ib;
   renderInfo.VertArr = &vao;
   renderInfo.Shader = &shad;
-  
+    
   renderInfo.Size = sizeof(indices) / sizeof(GLfloat);
   renderInfo.Vertices = vertices;
 
-
-
   Steem::Renderer renderer;
   renderer.SetDrawInfo(renderInfo);
-  ///////////////////////////////////////////////////
-  while(!glfwWindowShouldClose(window))
-///////////////////////////////////////////////////
-  {
-    ///////////////////////////////////////////////////
-    glfwPollEvents();
-    glfwSwapBuffers(window);
+  win.AddRender(renderer);
 
-    glClearColor(0.2f, 0.4f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    ///////////////////////////////////////////////////
-    renderer.Draw();
-
-  }
-}
-///////////////////////////////////////////////////
-  glfwTerminate();
-///////////////////////////////////////////////////
+  win.Bind();
 }

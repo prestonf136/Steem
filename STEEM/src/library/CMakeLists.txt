@@ -37,9 +37,15 @@ add_library(
   Renderer/Renderer.hpp
 )
 
+add_library(
+  Window
+  Window/Window.cpp
+  Window/Window.hpp
+)
+
 target_link_libraries(Shader PUBLIC glad glm::glm)
 target_link_libraries(Renderer PUBLIC Shader VertexArray IndexBuffer glad glm::glm)
-
+target_link_libraries(Window PUBLIC Renderer glm::glm glad glfw)
 target_link_libraries(VertexBuffer PUBLIC glad)
 target_link_libraries(IndexBuffer PUBLIC glad)
 target_link_libraries(VertexArray PUBLIC glad)
@@ -51,6 +57,7 @@ target_link_libraries(
   IndexBuffer
   VertexArray
   Renderer
+  Window
 
   glfw
   glad
