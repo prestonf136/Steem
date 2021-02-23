@@ -13,16 +13,13 @@
 
 int main()
 {
-///////////////////////////
-
-///////////////////////////
   Steem::WindowInfo Winfo;
   Winfo.VersionMajor = 4;
   Winfo.VersionMinor = 6;
   Winfo.Height = 600;
   Winfo.Width = 800;
   Winfo.Name = "OpenGL";
-  Winfo.ClearColor = glm::vec3(1.0f);
+  Winfo.ClearColor = glm::vec3(0.0f);
 
   Steem::Window win(Winfo);
 
