@@ -45,7 +45,7 @@ int main()
   "   FragColor = color;\n"
   "}\0";
 /* 
-this context is created because if any
+this scope is created because if any
 the Steem::* go out of scope
 they destroy any memory they have used
 after glfw is denitliazed, but making 
