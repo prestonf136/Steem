@@ -1,6 +1,6 @@
 #include "Window.hpp"
 
-Steem::Window::Window(Steem::WindowInfo  const &info)
+Steem::Window::Window(Steem::WindowInfo const& info)
 {
     m_Info = info;
 
@@ -16,24 +16,22 @@ Steem::Window::Window(Steem::WindowInfo  const &info)
     ST_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 };
 
-void Steem::Window::AddRender(const Steem::Renderer &renderer)
+void Steem::Window::AddRender(const Steem::Renderer& renderer)
 {
     m_Renderers.push_back(renderer);
 }
 
 void Steem::Window::Bind() const
 {
-    while(!glfwWindowShouldClose(m_Window))
-    {
+    while (!glfwWindowShouldClose(m_Window)) {
 
         glfwPollEvents();
         glfwSwapBuffers(m_Window);
 
-        glClearColor(m_Info.ClearColor.x,m_Info.ClearColor.y,m_Info.ClearColor.z, 1.0f);
+        glClearColor(m_Info.ClearColor.x, m_Info.ClearColor.y, m_Info.ClearColor.z, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        for(auto i : m_Renderers)
-        {
+        for (auto i : m_Renderers) {
             i.Draw();
         }
     }

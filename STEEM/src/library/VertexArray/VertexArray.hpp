@@ -1,13 +1,13 @@
 #pragma once
 
-#include <glad/glad.h>
 #include "../steem_macros.hpp"
+#include <glad/glad.h>
 
 namespace Steem {
-class VertexArray
-{
+class VertexArray {
 private:
     GLuint m_BufferID;
+
 public:
     VertexArray();
     ~VertexArray();

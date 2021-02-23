@@ -1,21 +1,20 @@
 #pragma once
 
-#include <glad/glad.h>
 #include "../steem_macros.hpp"
+#include <glad/glad.h>
 
 namespace Steem {
-struct VertexBufferInfo
-{
+struct VertexBufferInfo {
     GLuint size;
-    GLfloat *VertexArray;
+    GLfloat* VertexArray;
 };
 }
 
 namespace Steem {
-class VertexBuffer
-{
+class VertexBuffer {
 private:
     GLuint m_BufferID;
+
 public:
     VertexBuffer(Steem::VertexBufferInfo info);
     ~VertexBuffer();

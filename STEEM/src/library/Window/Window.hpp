@@ -1,6 +1,7 @@
 #pragma once
-
+// clang-format off
 #include <glad/glad.h>
+// clang-format on
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
@@ -12,8 +13,7 @@
 #include <string>
 
 namespace Steem {
-struct WindowInfo
-{
+struct WindowInfo {
     int VersionMajor;
     int VersionMinor;
     int Height;
@@ -26,16 +26,16 @@ struct WindowInfo
 
 namespace Steem {
 
-class Window
-{
+class Window {
 private:
     Steem::WindowInfo m_Info;
-    GLFWwindow *m_Window;
+    GLFWwindow* m_Window;
     std::vector<Renderer> m_Renderers;
+
 public:
-    Window(Steem::WindowInfo  const &info);
+    Window(Steem::WindowInfo const& info);
     inline ~Window() { glfwTerminate(); };
-    void AddRender(Steem::Renderer const &renderer);
+    void AddRender(Steem::Renderer const& renderer);
     void Bind() const;
 };
 }

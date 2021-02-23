@@ -1,21 +1,19 @@
 #pragma once
 
-#include <glad/glad.h>
 #include "../steem_macros.hpp"
+#include <glad/glad.h>
 #include <vector>
 
 namespace Steem {
-struct IndexBufferInfo
-{
+struct IndexBufferInfo {
     GLuint size;
-    GLuint *IndexArray;
+    GLuint* IndexArray;
     GLuint stride = 0;
 };
 }
 
 namespace Steem {
-class IndexBuffer
-{
+class IndexBuffer {
 private:
     GLuint m_BufferID;
     GLuint m_AttribPntr = 0;
@@ -23,14 +21,15 @@ private:
 
     IndexBufferInfo m_Info;
     std::vector<GLuint> used_pntrs;
+
 public:
-    IndexBuffer(Steem::IndexBufferInfo const &info);
+    IndexBuffer(Steem::IndexBufferInfo const& info);
     ~IndexBuffer();
 
     void SetAttrib(int size);
 
     inline void Bind() const { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_BufferID); };
     inline void UnBind() const { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); };
-    inline int GetHighest() const {return used_pntrs.back(); };
+    inline int GetHighest() const { return used_pntrs.back(); };
 };
 }
