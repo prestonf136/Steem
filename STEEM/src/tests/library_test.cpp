@@ -28,7 +28,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanDebugCallb(
     if (Flags & VK_DEBUG_REPORT_DEBUG_BIT_EXT)
         std::cout << "[Debug Report]: ";
     std::cout << std::endl;
-    std::cout << "\tFrom: [" << LayerPrefix << "] \n\t" << Msg << std::endl;
+    std::cout << "\tBy: " << LayerPrefix << "\n\t" << Msg << std::endl;
     return VK_FALSE;
 }
 
