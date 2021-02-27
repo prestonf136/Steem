@@ -24,12 +24,11 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanDebugCallb(
     if (Flags & VK_DEBUG_REPORT_WARNING_BIT_EXT)
         std::cout << "[Debug Warning]: ";
     if (Flags & VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT)
-        std::cout << "[Debug Preformance Warn]: ";
-    if (Flags & VK_DEBUG_REPORT_ERROR_BIT_EXT)
         std::cout << "[Error Report]: ";
     if (Flags & VK_DEBUG_REPORT_DEBUG_BIT_EXT)
         std::cout << "[Debug Report]: ";
-    std::cout << Msg << std::endl;
+    std::cout << std::endl;
+    std::cout << "\tFrom: [" << LayerPrefix << "] \n\t" << Msg << std::endl;
     return VK_FALSE;
 }
 
