@@ -1,77 +1,136 @@
-// clang-format off
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-// clang-format on
-#include "../library/IndexBuffer/IndexBuffer.hpp"
-#include "../library/Renderer/Renderer.hpp"
-#include "../library/Shader/Shader.hpp"
-#include "../library/VertexArray/VertexArray.hpp"
-#include "../library/VertexBuffer/VertexBuffer.hpp"
-#include "../library/Window/Window.hpp"
-#include "../library/steem_macros.hpp"
-
+#include <bits/stdint-uintn.h>
+#include <cassert>
 #include <iostream>
+#include <vector>
+#include <vulkan/vulkan.h>
+#include <vulkan/vulkan_core.h>
+
+PFN_vkCreateDebugReportCallbackEXT fvkCreateDebugReportCallbackEXT = nullptr;
+PFN_vkDestroyDebugReportCallbackEXT fvkDestroyDebugReportCallbackEXT = nullptr;
+
+VKAPI_ATTR VkBool32 VKAPI_CALL VulkanDebugCallb(
+    VkDebugReportFlagsEXT Flags,
+    VkDebugReportObjectTypeEXT ObjType,
+    uint64_t SrcObj,
+    size_t Location,
+    int32_t MsgCode,
+    const char* LayerPrefix,
+    const char* Msg,
+    void* UserData)
+{
+    /* VK_DEBUG_REPORT_INFORMATION_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT | VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_DEBUG_BIT_EXT*/
+    if (Flags & VK_DEBUG_REPORT_INFORMATION_BIT_EXT)
+        std::cout << "[Debug Info]: ";
+    if (Flags & VK_DEBUG_REPORT_WARNING_BIT_EXT)
+        std::cout << "[Debug Warning]: ";
+    if (Flags & VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT)
+        std::cout << "[Debug Preformance Warn]: ";
+    if (Flags & VK_DEBUG_REPORT_ERROR_BIT_EXT)
+        std::cout << "[Error Report]: ";
+    if (Flags & VK_DEBUG_REPORT_DEBUG_BIT_EXT)
+        std::cout << "[Debug Report]: ";
+    std::cout << Msg << std::endl;
+    return VK_FALSE;
+}
 
 int main()
 {
-    Steem::WindowInfo Winfo;
-    Winfo.VersionMajor = 4;
-    Winfo.VersionMinor = 6;
-    Winfo.Height = 600;
-    Winfo.Width = 800;
-    Winfo.Name = "OpenGL";
-    Winfo.ClearColor = glm::vec3(0.0f);
+    VkInstance m_Instance = nullptr;
+    VkPhysicalDevice m_GPU = nullptr;
+    VkDevice m_Device = nullptr;
+    VkPhysicalDeviceProperties m_GpuProperties = {};
+    VkDebugReportCallbackEXT m_DebugReport = nullptr;
 
-    Steem::Window win(Winfo);
+    std::vector<const char*>
+        m_InstanceLayers { "VK_LAYER_KHRONOS_validation" };
+    std::vector<const char*> m_InstanceExstentions { VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
 
-    Steem::ShaderInfo ShadInf;
-    ShadInf.FragmentData = Steem::ReadFromFile("res/shaders/example.frag");
-    ShadInf.VertexData = Steem::ReadFromFile("res/shaders/example.vert");
+    uint32_t m_GraphicsFamilyIndex = 0;
 
-    Steem::Shader shad(ShadInf);
+    VkApplicationInfo appInfo {};
+    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+    appInfo.apiVersion = VK_API_VERSION_1_2;
+    appInfo.applicationVersion = VK_MAKE_VERSION(0, 0, 1);
+    appInfo.pApplicationName = "Hello Vulkan!";
 
-    Steem::VertexBufferInfo arr;
-    // clang-format off
-    GLfloat vertices[] = {
-        0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-       -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
-       -0.5f,  0.5f, 1.0f, 1.0f, 0.0f,
+    VkInstanceCreateInfo InstanceInfo {};
+    InstanceInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    InstanceInfo.pApplicationInfo = &appInfo;
+    InstanceInfo.enabledLayerCount = m_InstanceLayers.size();
+    InstanceInfo.ppEnabledLayerNames = m_InstanceLayers.data();
+    InstanceInfo.enabledExtensionCount = m_InstanceExstentions.size();
+    InstanceInfo.ppEnabledExtensionNames = m_InstanceExstentions.data();
+
+    auto res = vkCreateInstance(&InstanceInfo, nullptr, &m_Instance);
+    assert(res == VK_SUCCESS && "Create Instance Failed");
+
+    fvkCreateDebugReportCallbackEXT = reinterpret_cast<PFN_vkCreateDebugReportCallbackEXT>(vkGetInstanceProcAddr(m_Instance, "vkCreateDebugReportCallbackEXT"));
+    fvkDestroyDebugReportCallbackEXT = reinterpret_cast<PFN_vkDestroyDebugReportCallbackEXT>(vkGetInstanceProcAddr(m_Instance, "vkDestroyDebugReportCallbackEXT"));
+
+    assert(fvkCreateDebugReportCallbackEXT != nullptr && fvkDestroyDebugReportCallbackEXT != nullptr);
+
+    VkDebugReportCallbackCreateInfoEXT DebugCallbInfo {};
+    DebugCallbInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+    DebugCallbInfo.pfnCallback = VulkanDebugCallb;
+    DebugCallbInfo.flags = VK_DEBUG_REPORT_INFORMATION_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT | VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_DEBUG_BIT_EXT;
+    fvkCreateDebugReportCallbackEXT(m_Instance, &DebugCallbInfo, nullptr, &m_DebugReport);
+
+    {
+        uint32_t gpuCount;
+        vkEnumeratePhysicalDevices(m_Instance, &gpuCount, nullptr);
+        std::vector<VkPhysicalDevice> DeviceList(gpuCount);
+
+        vkEnumeratePhysicalDevices(m_Instance, &gpuCount, DeviceList.data());
+        m_GPU = DeviceList[0];
+        vkGetPhysicalDeviceProperties(m_GPU, &m_GpuProperties);
+    }
+
+    {
+        uint32_t familyCount;
+        vkGetPhysicalDeviceQueueFamilyProperties(m_GPU, &familyCount, nullptr);
+        std::vector<VkQueueFamilyProperties> FamilyProperties(familyCount);
+        vkGetPhysicalDeviceQueueFamilyProperties(m_GPU, &familyCount, FamilyProperties.data());
+
+        bool found = false;
+        for (uint32_t i = 0; i < FamilyProperties.size(); i++) {
+            if (FamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+                found = true;
+                m_GraphicsFamilyIndex = i;
+            }
+        }
+
+        assert(found);
+    }
+
+    {
+        uint32_t propertyCount;
+        vkEnumerateInstanceLayerProperties(&propertyCount, nullptr);
+        std::vector<VkLayerProperties> InstanceLayerProperties(propertyCount);
+        vkEnumerateInstanceLayerProperties(&propertyCount, InstanceLayerProperties.data());
+    }
+
+    float QueuePriorities[] = {
+        1.0f
     };
-    // clang-format on
-    arr.size = sizeof(vertices);
-    arr.VertexArray = vertices;
-    Steem::VertexBuffer buf(arr);
 
-    Steem::VertexArray vao;
-    vao.Bind();
+    VkDeviceQueueCreateInfo deviceQueueInfo {};
+    deviceQueueInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    deviceQueueInfo.queueFamilyIndex = m_GraphicsFamilyIndex;
+    deviceQueueInfo.queueCount = 1;
+    deviceQueueInfo.pQueuePriorities = QueuePriorities;
 
-    Steem::IndexBufferInfo ibo;
+    VkDeviceCreateInfo deviceInfo {};
+    deviceInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    deviceInfo.queueCreateInfoCount = 1;
+    deviceInfo.pQueueCreateInfos = &deviceQueueInfo;
 
-    GLuint indices[] = {
-        0, 1, 3,
-        1, 2, 3
-    };
+    res = vkCreateDevice(m_GPU, &deviceInfo, nullptr, &m_Device);
+    assert(res == VK_SUCCESS);
+    /* end */
+    vkDestroyDevice(m_Device, nullptr);
+    m_Device = nullptr;
 
-    ibo.IndexArray = indices;
-    ibo.size = sizeof(indices);
-    ibo.stride = 5 * sizeof(GLfloat);
-
-    Steem::IndexBuffer ib(ibo);
-    ib.SetAttrib(2);
-    ib.SetAttrib(3);
-
-    Steem::RendererInfo renderInfo;
-    renderInfo.IndexBuf = &ib;
-    renderInfo.VertArr = &vao;
-    renderInfo.Shader = &shad;
-
-    renderInfo.Size = sizeof(indices) / sizeof(GLfloat);
-    renderInfo.Vertices = vertices;
-
-    Steem::Renderer renderer;
-    renderer.SetDrawInfo(renderInfo);
-    win.AddRender(renderer);
-
-    win.Bind();
+    fvkDestroyDebugReportCallbackEXT(m_Instance, m_DebugReport, nullptr);
+    vkDestroyInstance(m_Instance, nullptr);
+    m_Instance = nullptr;
 }

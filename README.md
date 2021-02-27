@@ -1,6 +1,6 @@
 # Steem
 
-currently working on abstracting opengl into classes
+Starting from scratch again! this time with vulkan in mind
 
 want to end up with:
 - [ ] Primitive System
@@ -9,6 +9,3 @@ want to end up with:
 - [ ] Texture Component
 - [ ] Model Loading System
 - [ ] GUI Components and System
-
-
-learning with https://learnopengl.com
