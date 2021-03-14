@@ -1,3 +1,6 @@
 [submodule "STEEM/src/library/vendor/glfw"]
 	path = STEEM/src/library/vendor/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "STEEM/src/library/vendor/glew"]
+	path = STEEM/src/library/vendor/glew
+	url = https://github.com/nigels-com/glew.git

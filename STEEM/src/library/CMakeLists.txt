@@ -5,9 +5,11 @@ add_library(
   INTERFACE
 )
 
+find_package(Vulkan REQUIRED)
+
 target_link_libraries(
   STEEM_LIBRARY INTERFACE 
-  vulkan
+  Vulkan::Vulkan
   dl
   pthread
   X11
