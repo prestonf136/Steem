@@ -4,3 +4,9 @@
 [submodule "STEEM/src/library/vendor/glew"]
 	path = STEEM/src/library/vendor/glew
 	url = https://github.com/nigels-com/glew.git
+[submodule "STEEM/src/library/vendor/VkCSetup"]
+	path = STEEM/src/library/vendor/VkCSetup
+	url = https://github.com/prestonf136/VkCSetup
+[submodule "STEEM/src/library/vendor/vk-bootstrap"]
+	path = STEEM/src/library/vendor/vk-bootstrap
+	url = https://github.com/charles-lunarg/vk-bootstrap.git

@@ -1,4 +1,5 @@
 add_subdirectory("vendor/glfw")
+add_subdirectory("vendor/vk-bootstrap")
 
 add_library(
   STEEM_LIBRARY
@@ -17,4 +18,5 @@ target_link_libraries(
   Xrandr
   Xi
   glfw
+  vk-bootstrap::vk-bootstrap
 )
